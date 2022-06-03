@@ -5,3 +5,5 @@ const log = function(){
 }
 
 module.exports.url = endpoint
+module.export.batch = batch
+module
