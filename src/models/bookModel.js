@@ -8,10 +8,14 @@ const bookSchema = new mongoose.Schema( {
         ref: "Author"
     },
     price: Number,
-    ratings: Number
-
+    ratings: Number,
+    publisher_id: {
+        type: ObjectId,
+        ref: "Publisher"
+    }
+ 
 
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('LibraryBook', bookSchema)
+module.exports = mongoose.model('Book', bookSchema)
