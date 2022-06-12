@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb+srv://functionup-cohort:G0Loxqc9wFEGyEeJ@cluster0.rzotr.mongodb.net/Pritesh8769811-DB?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://talha01rahman:Abc123@cluster0.vflfgln.mongodb.net/test", {
     useNewUrlParser: true
 })
 .then( () => console.log("MongoDb is connected"))
@@ -20,6 +20,26 @@ app.use (
         next();
   }
   );
+
+const assingmentMW = function (req, res, next) {
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + " "
+                  + (currentdate.getMonth()+1) + " "
+                  + currentdate.getFullYear() + " "
+                  + currentdate.getHours() + ":"
+                  + currentdate.getMinutes() + ":"
+                  + currentdate.getSeconds();
+    
+  let ip = req.ip
+  let url = req.orignalUrl
+ // console.log('${datetime} ${ip} ${url}')
+  console.log("Date&Time => "+ datetime+ " IP => "+ip+ " Url => "+url)
+  next()
+}
+app.use(assingmentMW)
+
+
+
 
 app.use('/', route);
 
