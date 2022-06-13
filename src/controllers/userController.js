@@ -9,32 +9,26 @@ const basicCode= async function(req, res, next) {
 
     console.log( "HEADER DATA ABOVE")
     console.log( "hey man, congrats you have reached the Handler")
-    //res.send({ msg: "This is coming from controller (handler)"})
+    res.send({ msg: "This is coming from controller (handler)"})
     next()
     }
 
-const createUser= async function (req, res) {
-    
+const createUser= async function (req, res) {   
     let data= req.body
-    let tokenDataInHeaders= req.headers.token
-    //Get all headers from request
-    console.log("Request headers before modificatiom",req.headers)
-    //Get a header from request
+    let tokenDataInHeaders = req.headers.token
+     // Get all header
+    console.log("Request headers before modification", req.headers)
     console.log(req.headers.batch)
-    console.log(req.headers["content-type"])
+    console.log(req.header["content-type"])
     console.log(tokenDataInHeaders)
-    //Set a header in request
-    req.headers['month']='June' //req.headers.month = "June"
-
-    //Set an attribute in request object
+    // Set header in request 
+    req.header['months'] = 'June' ///req.
+    let savedData= await UserModel.create(data)
+    // set a header in response 
+    res.header('year', 2022)
+    // set an attribute in header
     req.anything = "everything"
-    
-    
-    console.log("Request headers after modificatiom",req.headers)
-    
-    //Set a header in response
-    res.header('year','2022')
-    res.send({msg: "Hi"})
+    res.send({msg: savedData})
 }
 
 const getUsersData= async function (req, res) {
