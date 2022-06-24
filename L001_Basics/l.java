@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.locks.AbstractOwnableSynchronizer;
 
 public class l {
     
@@ -143,21 +144,114 @@ public class l {
              //   count++;
             }
         }
+         
+          // * * * * * * *   n=4  str=7 spc=0
+          //   * * * * *     n=4  str=5 nsp=1
+          //     * * *       
+          //       *
+          //       *          
+          //     * * *
+          //   * * * * *
+          // * * * * * * *
+
+        public static void pattern_08(int n) {
+            int nst = (2*n)-1, nsp = 0;
+            //int count = 1;
+            for (int r = 1; r <= 2*n; r++) {
+                
+                for (int csp = 1; csp <= nsp; csp++)
+                    System.out.print("  ");
+    
+                for (int cst = 1; cst <= nst; cst++)
+                    System.out.print("* ");
+    
+                
+                if(r<n){
+                nsp++;
+                nst=nst-2;
+                }
+                // else if(r==n){
+                //     nst=1;
+                //     nsp=n-1;
+                // }
+                else if(r>n){
+                  nsp--;
+                  nst=nst+2;
+                }
+                System.out.println();
+             //   count++;
+            }
+        }
+        //           *         n=3 spc=3 str=1 
+        //         * * *       n=2 spc=2 str=3
+        //       * * * * *     n=1 spc=1 str=5 
+        //     * * * * * * *   n=4 spc=0 str=7
+        //       * * * * *     n=3 spc=1 str=5
+        //         * * *       n=2 spc=2 str=3
+        //           *         n=1 spc=3 str=1
+        public static void pattern_10(int n) {
+            int nst = 1, nsp = n/2;
+            //int count = 1;
+            for (int r = 1; r <=n; r++) {
+                
+                for (int csp = 1; csp <= nsp; csp++)
+                    System.out.print("  ");
+    
+                for (int cst = 1; cst <= nst; cst++)
+                    System.out.print("* ");
+    
+                
+                if(r<=n/2){
+                    nsp--;
+                    nst=nst+2;
+                }
+                else if(r>=n/2){
+                    nsp++;
+                    nst=nst-2;
+                }
+                System.out.println();
+            
+            }
+        }
 
 
-
-
-
-
-
-
+        public static void pattern_11(int n) {
+            int nst = 1, nsp = n/2;
+            //int count = 1;
+            int count=1;
+            for (int r = 1; r <=n; r++) {
+            
+                for (int csp = 1; csp <= nsp; csp++)
+                    System.out.print("  ");
+    
+                for (int cst = 1; cst <= nst; cst++){
+                    System.out.print(count+" ");
+                   
+                    if (cst <= nst / 2) {
+                        count++;
+                    } else {
+                        count--;
+                    } }
+                if(r<=n/2){
+                    nsp--;
+                    nst=nst+2;
+                }
+                else if(r>=n/2){
+                    nsp++;
+                    nst=nst-2;
+                }
+                System.out.println();
+            
+            }
+        }
 
 
 
 
     public static void main(String[] args) {
+
        int n = scn.nextInt();
-       pattern_01(n);
+       pattern_11(n);
     }
 }
 
