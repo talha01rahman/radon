@@ -46,6 +46,7 @@ public class l001_basic {
     }
 
     public static boolean palindrome(int[] arr) {
+        
 
     }
 
